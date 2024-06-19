@@ -44,7 +44,7 @@ const Jobs = () => {
       </div>
 
       <div className="mt-20 grid lg:grid-cols-3 md:grid-cols-2">
-        {filteredJobs.slice(0, 10).map((job, index) => (
+        {filteredJobs.map((job, index) => (
           <div key={index} className="lg:w-[70%] shadow-2xl p-5 rounded-xl">
             <img
               src={job.image}
@@ -71,9 +71,7 @@ const Jobs = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center">
-        <Link className="btn btn-accent mt-16">See All Jobs</Link>
-      </div>
+      
     </div>
   );
 };

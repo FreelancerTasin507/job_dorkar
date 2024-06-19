@@ -27,24 +27,24 @@ const Menubar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 gap-5 font-semibold pr-5 shadow bg-base-100 rounded-box w-52"
             >
-              <Link>Home</Link>
-              <Link>My Job</Link>
-              <Link>Post Job</Link>
-              <Link>LogOut</Link>
-              <Link>Login</Link>
-              <Link>Registration</Link>
+              <Link to="/">Home</Link>
+              <Link to="/MyJobs">My Job</Link>
+              <Link to="/AddJob">Post Job</Link>
+              <button>LogOut</button>
+              <Link to="/Login">Login</Link>
+              <Link  to="/Register">Registration</Link>
             </ul>
           </div>
           <a className="btn btn-ghost text-2xl font-bold">Job Dorkar</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10 font-semibold pr-5">
-            <Link>Home</Link>
-            <Link>My Job</Link>
-            <Link>Post Job</Link>
-            <Link>LogOut</Link>
-            <Link>Login</Link>
-            <Link>Registration</Link>
+            <Link to="/">Home</Link>
+            <Link to="/MyJobs">My Job</Link>
+            <Link to="/AddJob">Post Job</Link>
+            <button>LogOut</button>
+            <Link to="/Login">Login</Link>
+            <Link  to="/Register">Registration</Link>
           </ul>
         </div>
       </div>
