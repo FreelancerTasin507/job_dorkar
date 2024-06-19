@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Menubar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  // console.log(user?.email);
+  const handleLogout = () => {
+    logOut()
+      .then()
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="px-3 py-1">
       <div className="navbar bg-base-100">
@@ -30,9 +40,14 @@ const Menubar = () => {
               <Link to="/">Home</Link>
               <Link to="/MyJobs">My Job</Link>
               <Link to="/AddJob">Post Job</Link>
-              <button>LogOut</button>
-              <Link to="/Login">Login</Link>
-              <Link  to="/Register">Registration</Link>
+              {user?.email ? (
+                <li className="hover:cursor-pointer">
+                  <>LogOut</>
+                </li>
+              ) : (
+                <Link to="/Login">Login</Link>
+              )}
+              <Link to="/Register">Registration</Link>
             </ul>
           </div>
           <a className="btn btn-ghost text-2xl font-bold">Job Dorkar</a>
@@ -42,9 +57,14 @@ const Menubar = () => {
             <Link to="/">Home</Link>
             <Link to="/MyJobs">My Job</Link>
             <Link to="/AddJob">Post Job</Link>
-            <button>LogOut</button>
-            <Link to="/Login">Login</Link>
-            <Link  to="/Register">Registration</Link>
+            {user?.email ? (
+              <li onClick={handleLogout} className="hover:cursor-pointer">
+                <>LogOut</>
+              </li>
+            ) : (
+              <Link to="/Login">Login</Link>
+            )}
+            <Link to="/Register">Registration</Link>
           </ul>
         </div>
       </div>

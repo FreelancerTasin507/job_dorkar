@@ -17,11 +17,11 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "home",
+        path: "/home",
         element: <Home></Home>,
       },
       {
-        path: "services",
+        path: "/services",
         element: <Services></Services>,
       },
       {
@@ -41,11 +41,11 @@ const router = createBrowserRouter([
       //   ),
       // },
       {
-        path: "login",
+        path: "/login",
         element: <Login></Login>,
       },
       {
-        path: "register",
+        path: "/register",
         element: <Register></Register>,
       },
     ],

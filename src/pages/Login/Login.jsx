@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import SocialLoginBtn from "../SocialLoginBtn/SocialLoginBtn";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 // import { useLocation, useHistory, useNavigate } from "react-router";
 
@@ -15,61 +15,63 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = (event) => {
-    event.preventDefault();
-    if ((email, password)) {
-      loginUser(email, password)
-        .then((result) => {
-          console.log(result.user);
-          // navigate("/");
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await loginUser(email, password);
+      setSuccess("User logged in successfully");
+    } catch (err) {
+      setError(err.message);
     }
   };
   return (
-    <div>
+    <div className="mt-20">
       <div className="container">
-        <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-md-6 ">
-            <div className="border w-100 m-auto text-center p-5">
-              <form action="">
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="email p-3 m-2"
-                  type="email"
-                  placeholder="enter your email"
-                />
-                <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="password p-3 m-2"
-                  type="password"
-                  placeholder="enter your password"
-                />
-                <button
-                  onClick={handleLogin}
-                  className="btn btn-info w-75 p-2 mt-3"
-                >
-                  Login
-                </button>
-                <p className="p-2">
-                  <small className="text-info">
-                    are you new? register here..
-                  </small>
-                </p>
-              </form>
-            </div>
-          </div>
-          <div className="col-md-6">
+        <div className="md:flex">
+          <div className="md:w-[50%]">
             <img
               className="w-100"
               src="https://i.ibb.co/hYJTmVX/undraw-Mobile-login-re-9ntv-1.png"
               alt=""
             />
           </div>
-          <SocialLoginBtn></SocialLoginBtn>
+          <div className="md:w-[50%]">
+            <div className="border shadow-2xl px-5 py-16 rounded-3xl flex flex-col mx-auto text-center">
+              <h1 className="text-3xl mb-4">Login</h1>
+              <form action="">
+                <input
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="email p-3 m-2 shadow-lg rounded-2xl w-[80%] hover:bg-slate-300"
+                  type="email"
+                  placeholder="enter your email"
+                />
+                <br />
+                <input
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="password p-3 m-2 shadow-lg rounded-2xl w-[80%] hover:bg-slate-300"
+                  type="password"
+                  placeholder="enter your password"
+                />
+                <br />
+                <button
+                  onClick={handleLogin}
+                  className="btn btn-info w-[20%] p-2 mt-3"
+                >
+                  Login
+                </button>
+                <p className="p-2">
+                  <small className="text-info">
+                    are you new? <Link to="/register">register here</Link>
+                  </small>
+                </p>
+              </form>
+              {error && <p className="text-red-700 font-bold">{error}</p>}
+              {success && <p className="text-green-600 font-bold">{success}</p>}
+              <SocialLoginBtn></SocialLoginBtn>
+            </div>
+          </div>
         </div>
       </div>
     </div>
