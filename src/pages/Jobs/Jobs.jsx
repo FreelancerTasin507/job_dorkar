@@ -8,7 +8,7 @@ const Jobs = () => {
   const [activeTab, setActiveTab] = useState("offline");
 
   useEffect(() => {
-    fetch(`http://localhost:5500/allJobs`)
+    fetch(`https://job-portal-server-c4c5guvft.vercel.app/allJobs`)
       .then((res) => res.json())
       .then((result) => {
         setJobs(result);
@@ -24,7 +24,7 @@ const Jobs = () => {
   );
 
   const handleSearch = () => {
-    fetch(`http://localhost:5500/getJobsByText/${searchText}`)
+    fetch(`https://job-portal-server-c4c5guvft.vercel.app/getJobsByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
