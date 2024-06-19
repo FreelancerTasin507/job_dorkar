@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { FaTrash } from "react-icons/fa";
 
 const MyJobs = () => {
   const { user } = useContext(AuthContext);
@@ -13,76 +14,50 @@ const MyJobs = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [control, setControl] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/myJobs/${user?.email}`)
+    fetch(`http://localhost:5500/myJobs/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setJobs(data);
       });
   }, [user, control]);
 
-
-  const handleJobUpdate = (data) => {
-    console.log(data);
-    fetch(`http://localhost:5500/updateJob/${data._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.modifiedCount > 0) {
-          setControl(!control);
-        }
-        console.log(result);
-      });
-  };
-
   return (
     <div>
-      {/* <div className="my-jobs-container">
-        <h1 className="text-center p-4 ">ALL My Jobs</h1>
-       
-        <table striped bordered hover className="container">
+      <div className="my-jobs-container">
+        <h1 className="text-center p-4 text-4xl font-bold mt-10 mb-10 ">
+          ALL My Jobs
+        </h1>
+
+        <table striped bordered hover className="w-full text-center">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>vacancy</th>
-              <th>salary</th>
-              <th>Edit</th>
-              <th>Action</th>
+              <th className="md:p-3">#</th>
+              <th className="md:p-3">Title</th>
+              <th className="md:p-3">Category</th>
+              <th className="md:p-3">vacancy</th>
+              <th className="md:p-3">salary</th>
+              <th className="md:p-3">Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="">
             {jobs?.map((job, index) => (
-              <tr>
-                <td>{index + 1}</td>
-                <td>{job.title}</td>
-                <td>{job.category}</td>
-                <td>{job.vacancy}</td>
-                <td>{job.salary}</td>
-                <td>
-                  <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Edit
-                  </Button>
-                  <UpdateJobModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                    job={job}
-                    handleJobUpdate={handleJobUpdate}
-                  />
-                </td>
-                <td>
+              <tr className="">
+                <td className="md:p-3">{index + 1}</td>
+                <td className="md:p-3">{job.title}</td>
+                <td className="md:p-3">{job.category}</td>
+                <td className="md:p-3">{job.vacancy}</td>
+                <td className="md:p-3">{job.salary}</td>
+
+                <td className="md:p-3">
                   {" "}
-                  <button>Delete</button>
+                  <button><FaTrash></FaTrash></button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div> */}
+      </div>
     </div>
   );
 };
