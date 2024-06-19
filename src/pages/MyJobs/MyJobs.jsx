@@ -14,7 +14,7 @@ const MyJobs = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [control, setControl] = useState(false);
   useEffect(() => {
-    fetch(`https://job-portal-server-c4c5guvft.vercel.app/myJobs/${user?.email}`)
+    fetch(`https://job-portal-server-feetzurw7.vercel.app/myJobs/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -23,7 +23,7 @@ const MyJobs = () => {
   }, [user, control]);
 
   const handleSearch = () => {
-    fetch(`https://job-portal-server-c4c5guvft.vercel.app/getJobsByText/${searchText}`)
+    fetch(`https://job-portal-server-feetzurw7.vercel.app/getJobsByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

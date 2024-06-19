@@ -17,7 +17,7 @@ const AddJob = () => {
   const onSubmit = (data) => {
     data.skills = selectedOption;
 
-    fetch("https://job-portal-server-c4c5guvft.vercel.app/post-job", {
+    fetch("https://job-portal-server-feetzurw7.vercel.app/post-job", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
