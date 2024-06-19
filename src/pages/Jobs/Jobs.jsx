@@ -23,6 +23,15 @@ const Jobs = () => {
     activeTab === "offline" ? job.status === "offline" : job.status === "remote"
   );
 
+  const handleSearch = () => {
+    fetch(`http://localhost:5500/getJobsByText/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setJobs(data);
+      });
+  };
+
   return (
     <div className="mt-20">
       <h1 className="text-center p-5 text-4xl font-bold mb-20">
@@ -44,14 +53,23 @@ const Jobs = () => {
         </button>
       </div>
 
+      <div className="search-box p-2">
+        <input
+          onChange={(e) => setSearchText(e.target.value)}
+          type="text"
+          className="p-1 border py-3 px-3 rounded-lg "
+          placeholder="Search"
+        />{" "}
+        <button className="btn btn-info" onClick={handleSearch}>
+          Search
+        </button>
+      </div>
+
       <div className="mt-20 grid lg:grid-cols-3 md:grid-cols-2">
         {filteredJobs.map((job, index) => (
-          <Job job={job} key={index} className="">
-           
-          </Job>
+          <Job job={job} key={index} className=""></Job>
         ))}
       </div>
-      
     </div>
   );
 };

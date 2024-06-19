@@ -50,7 +50,7 @@ const Menubar = () => {
               <Link to="/Register">Registration</Link>
             </ul>
           </div>
-          <a className="btn btn-ghost text-2xl font-bold">Job Dorkar</a>
+          <Link to="/" className="btn btn-ghost text-2xl font-bold">Job Dorkar</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10 font-semibold pr-5">
