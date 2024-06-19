@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Jobs.css";
 import { Link } from "react-router-dom";
+import Job from "../Job/Job";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -45,30 +46,9 @@ const Jobs = () => {
 
       <div className="mt-20 grid lg:grid-cols-3 md:grid-cols-2">
         {filteredJobs.map((job, index) => (
-          <div key={index} className="lg:w-[70%] shadow-2xl p-5 rounded-xl">
-            <img
-              src={job.image}
-              alt={job.title}
-              className=" w-full h-[300px] mx-auto"
-            />
-            <div className="card-body">
-              <h2 className="card-title">{job.title}</h2>
-              <p>
-                <strong>Salary:</strong> {job.salary}
-              </p>
-              <p>
-                <strong>Deadline:</strong> {job.deadline}
-              </p>
-
-              <p>
-                <strong>Category:</strong> {job.category}
-              </p>
-              <p>
-                <strong>Skills:</strong> {job.skills.join(", ")}
-              </p>
-              <button className="btn btn-primary">Apply Now</button>
-            </div>
-          </div>
+          <Job job={job} key={index} className="">
+           
+          </Job>
         ))}
       </div>
       
