@@ -13,8 +13,8 @@ const Menubar = () => {
       });
   };
   return (
-    <div className="px-3 py-1">
-      <div className="navbar bg-base-100">
+    <div className="px-3 py-1 sticky top-0 z-10">
+      <div className="navbar bg-slate-200 rounded-full">
         <div className="justify-start w-[70%]">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -38,6 +38,7 @@ const Menubar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 gap-5 font-semibold pr-5 shadow bg-base-100 rounded-box w-52"
             >
               <Link to="/">Home</Link>
+              <Link to="/AppliedJobs">Applied Jobs</Link>
               <Link to="/MyJobs">My Job</Link>
               <Link to="/AddJob">Post Job</Link>
               {user?.email ? (
@@ -55,6 +56,7 @@ const Menubar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-10 font-semibold pr-5">
             <Link to="/">Home</Link>
+            <Link to="/AppliedJobs">Applied Jobs</Link>
             <Link to="/MyJobs">My Job</Link>
             <Link to="/AddJob">Post Job</Link>
             {user?.email ? (

@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 import ServiceDetail from "../pages/ServiceDetails/ServiceDetail";
+import AppliedJobs from "../AppliedJobs/AppliedJobs";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/appliedJobs",
+        element: <AppliedJobs></AppliedJobs>,
       },
     ],
   },
