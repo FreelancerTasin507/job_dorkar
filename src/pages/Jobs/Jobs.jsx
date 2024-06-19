@@ -7,7 +7,7 @@ const Jobs = () => {
   const [activeTab, setActiveTab] = useState("offline");
 
   useEffect(() => {
-    fetch(`http://localhost:5500/jobs`)
+    fetch(`http://localhost:5500/allJobs`)
       .then((res) => res.json())
       .then((result) => {
         setJobs(result);

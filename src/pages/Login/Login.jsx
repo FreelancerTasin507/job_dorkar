@@ -2,17 +2,20 @@
 import React, { useContext, useState } from "react";
 
 import SocialLoginBtn from "../SocialLoginBtn/SocialLoginBtn";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 // import { useLocation, useHistory, useNavigate } from "react-router";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
-  // const location = useLocation();
+  const location = useLocation();
   // const history = useHistory();
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
+  const from = location.state?.from?.pathname || "/";
+
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,6 +28,7 @@ const Login = () => {
     } catch (err) {
       setError(err.message);
     }
+    navigate(from, { replace: true });
   };
   return (
     <div className="mt-20">

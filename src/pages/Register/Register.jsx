@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import SocialLoginBtn from "../SocialLoginBtn/SocialLoginBtn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { registerUser } = useContext(AuthContext);
@@ -10,6 +10,8 @@ const Register = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -29,6 +31,7 @@ const Register = () => {
         .catch((err) => {
           console.log(err.message);
         });
+      navigate("/");
     } else {
       setError("All fields are required");
     }
