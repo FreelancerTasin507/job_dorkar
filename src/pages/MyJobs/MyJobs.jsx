@@ -22,13 +22,30 @@ const MyJobs = () => {
       });
   }, [user, control]);
 
+  const handleSearch = () => {
+    fetch(`http://localhost:5500/getJobsByText/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setJobs(data);
+      });
+  };
+
   return (
     <div>
       <div className="my-jobs-container">
         <h1 className="text-center p-4 text-4xl font-bold mt-10 mb-10 ">
           ALL My Jobs
         </h1>
-
+        <div className="search-box p-2 text-center">
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            className="p-1 border py-3 px-3 rounded-lg "
+            placeholder="Search"
+          />{" "}
+          <button className="btn btn-info" onClick={handleSearch}>Search</button>
+        </div>
         <table striped bordered hover className="w-full text-center">
           <thead>
             <tr>
@@ -51,7 +68,9 @@ const MyJobs = () => {
 
                 <td className="md:p-3">
                   {" "}
-                  <button><FaTrash></FaTrash></button>
+                  <button>
+                    <FaTrash></FaTrash>
+                  </button>
                 </td>
               </tr>
             ))}
