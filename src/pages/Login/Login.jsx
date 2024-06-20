@@ -15,6 +15,11 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
+
+
+
+
+
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -57,6 +62,7 @@ const Login = () => {
                   className="password p-3 m-2 shadow-lg rounded-2xl w-[80%] hover:bg-slate-300"
                   type="password"
                   placeholder="enter your password"
+                  autoComplete="current-password"
                 />
                 <br />
                 <button
