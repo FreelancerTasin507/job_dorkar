@@ -6,7 +6,7 @@ const AppliedJobs = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch("https://job-portal-server-feetzurw7.vercel.app/allJobs")
+    fetch("https://job-dorkar-server-1.onrender.com/allJobs")
       .then((res) => res.json())
       .then((data) => {
         const appliedJobIds = JSON.parse(localStorage.getItem("jobIds")) || [];

@@ -8,7 +8,7 @@ const Jobs = () => {
   const [activeTab, setActiveTab] = useState("offline");
 
   useEffect(() => {
-    fetch(`https://job-portal-server-feetzurw7.vercel.app/allJobs`)
+    fetch(`https://job-dorkar-server-1.onrender.com/allJobs`)
       .then((res) => res.json())
       .then((result) => {
         setJobs(result);
@@ -24,7 +24,7 @@ const Jobs = () => {
   );
 
   const handleSearch = () => {
-    fetch(`https://job-portal-server-feetzurw7.vercel.app/getJobsByText/${searchText}`)
+    fetch(`https://job-dorkar-server-1.onrender.com/getJobsByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
